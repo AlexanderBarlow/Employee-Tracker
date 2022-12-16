@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 const consoleTable = require('console.table');
 const inquirer = require('inquirer');
+const util = require('util');
 require('dotenv').config();
 
 const sequelize = new Sequelize(
@@ -75,6 +76,12 @@ const prompt = () => {
 
 const viewAllEmployees = () => {
     //We just need a query that displays a table with all the employees
+    db.query(`SELECT first_name, last_name FROM employee`, (err, result) => {
+        if(err) {
+            console.log(err);
+        }
+        console.table(results);
+    })
 };
 
 const viewDepartment = () => {
