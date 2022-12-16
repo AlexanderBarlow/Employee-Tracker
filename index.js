@@ -161,7 +161,7 @@ const addRole = () => {
         {
             type: 'input',
             message: 'What is the department_id for the role?',
-            name: 'addRole'
+            name: 'addDepartment'
         },
     );
     // add data to db
@@ -170,6 +170,20 @@ const addRole = () => {
 
 const updateRole = () => {
     //use inquirer to prompt more questions about role changes
+    inquirer.prompt
+    (
+        {
+            name: 'update employee',
+            type: 'list',
+            message: `Which employee's role do you want to upate?`,
+            choices: []
+        },
+        {
+            type: 'input',
+            message: 'What is the new role?',
+            name: 'addRole'
+        },
+    );
     // update data
     //show updated data
 };
