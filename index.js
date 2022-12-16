@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const util = require('util');
 require('dotenv').config();
 
-const sequelize = new Sequelize(
+const db = new Sequelize(
     process.env.database,
     process.env.db_username,
     process.env.password,
@@ -46,7 +46,7 @@ const prompt = () => {
         let answer = data;
         //switch statement to account for multiple answers which need to handle different logic
         switch (answer.action) {
-            case 'View Employees':
+            case 'View All Employees':
                 viewAllEmployees();
                 break;
 
@@ -79,8 +79,9 @@ const viewAllEmployees = () => {
     db.query(`SELECT first_name, last_name FROM employee`, (err, result) => {
         if(err) {
             console.log(err);
-        }
+        }else {
         console.table(result);
+        }
     })
 };
 
@@ -89,8 +90,9 @@ const viewDepartment = () => {
     db.query(`SELECT name FROM department`, (err, result) => {
         if(err) {
             console.log(err);
-        }
+        }else {
         console.table(result);
+        }
     })
 };
 
@@ -118,7 +120,7 @@ const updateRole = () => {
 
 //This function tests the connection and only starts application if connection is successful
 const init = () => {
-    if(sequelize){
+    if(db){
         prompt();
     }else {
         throw(err);
