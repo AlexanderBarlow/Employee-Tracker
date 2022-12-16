@@ -80,13 +80,14 @@ const prompt = () => {
 
 const viewAllEmployees = () => {
     //We just need a query that displays a table with all the employees
-    db.query(`SELECT * FROM employee`, (err, result) => {
+    db.query(`SELECT * FROM employee ORDER BY id`, (err, result) => {
         if(err) {
             console.log(err);
         }else {
-        console.log(result);
+        console.table(result);
         }
         console.log('RESPONSE HANDLED');
+        prompt();
     })
 };
 
@@ -99,6 +100,7 @@ const viewDepartment = () => {
         console.log(result);
         }
         console.log('RESPONSE HANDLED');
+        prompt();
     })
 };
 
@@ -111,6 +113,7 @@ const viewRoles = () => {
         console.log(result);
         }
         console.log('RESPONSE HANDLED');
+        prompt();
     })
 };
 
@@ -139,9 +142,10 @@ const addEmployee = () => {
             name: 'employeeManager'
         }
 
-    )
+    ) 
     // add data to db
     //show added data
+    prompt();
 };
 
 const addRole = () => {
@@ -166,6 +170,7 @@ const addRole = () => {
     );
     // add data to db
     //show added data
+    prompt();
 };
 
 const updateRole = () => {
@@ -186,6 +191,7 @@ const updateRole = () => {
     );
     // update data
     //show updated data
+    prompt();
 };
 
 //This function tests the connection and only starts application if connection is successful
