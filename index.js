@@ -97,7 +97,7 @@ const viewDepartment = () => {
         if(err) {
             console.log(err);
         }else {
-        console.log(result);
+        console.table(result);
         }
         console.log('RESPONSE HANDLED');
         prompt();
@@ -110,7 +110,7 @@ const viewRoles = () => {
         if(err) {
             console.log(err);
         }else {
-        console.log(result);
+        console.table(result);
         }
         console.log('RESPONSE HANDLED');
         prompt();
