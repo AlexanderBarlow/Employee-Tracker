@@ -80,12 +80,18 @@ const viewAllEmployees = () => {
         if(err) {
             console.log(err);
         }
-        console.table(results);
+        console.table(result);
     })
 };
 
 const viewDepartment = () => {
     //Need a query that shows all departments
+    db.query(`SELECT name FROM department`, (err, result) => {
+        if(err) {
+            console.log(err);
+        }
+        console.table(result);
+    })
 };
 
 const viewRoles = () => {
