@@ -16,6 +16,14 @@ const sequelize = new Sequelize(
   );
 console.log ('Success')
 
+console.table(
+    `      ------------------------
+    |                        |
+    |    EMPLOYEE TRACKER    |
+    |                        |
+    -------------------------`
+)
+
 const prompt = () => {
     inquirer.prompt
     ({
