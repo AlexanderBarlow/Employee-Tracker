@@ -155,9 +155,18 @@ const addEmployee = () => {
             db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager})`, (err, res) => {
                 if(err){
                     throw(err)
-                }
+                }else {
                 console.table(res);
-            });
+                }
+            })
+                db.query(`SELECT * FROM employee`, (err, res) => {
+                    if(err){
+                        throw(err)
+                    }
+                    console.table(res);
+                    prompt();
+            })
+            
         })
     })
     //use inquirer to prompt more questions about employee data
@@ -172,7 +181,7 @@ const addRole = () => {
     (
         {
             type: 'input',
-            message: 'What is the name of the role?',
+            message: 'What is the id of the role?',
             name: 'addRole'
         },
         {
@@ -185,10 +194,32 @@ const addRole = () => {
             message: 'What is the department_id for the role?',
             name: 'addDepartment'
         },
-    );
+    ).then(data => {
+        const newRole = data.addRole;
+        const addSalary = data.addSalary;
+        const addDepartment = data.addDepartment;
+
+        db.query(`INSERT INTO employee (role_id) VALUES (${newRole})`, (err, res) => {
+            if(err){
+                throw(err)
+            } 
+            console.table(res)
+        })
+        db.query(`INSERT INTO roles (salary) VALUES (${addSalary})`, (err, res) => {
+            if(err){
+                throw(err)
+            }
+            console.table(res)
+        })
+        db.query(`INSERT INTO department (name) VALUES (${addDepartment})`, (err, res) => {
+            if(err){
+                throw(err)
+            }
+            console.table(res)
+        })
+    })
     // add data to db
     //show added data
-    prompt();
 };
 
 const updateRole = () => {
