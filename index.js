@@ -24,6 +24,7 @@ console.table(
     -------------------------`
 )
 
+//prompt to begin changes to db/ view db
 const prompt = () => {
     inquirer.prompt
     ({
@@ -42,7 +43,7 @@ const prompt = () => {
     }).then(data => {
         console.log(data);
         let answer = data;
-
+        //switch statement to account for multiple answers which need to handle different logic
         switch (answer.action) {
             case 'View Employees':
                 viewAllEmployees();
@@ -102,6 +103,7 @@ const updateRole = () => {
     //show updated data
 };
 
+//This function tests the connection and only starts application if connection is successful
 const init = () => {
     if(sequelize){
         prompt();
