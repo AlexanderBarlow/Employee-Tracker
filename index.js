@@ -118,42 +118,47 @@ const viewRoles = () => {
 };
 
 const addEmployee = () => {
-    //use inquirer to prompt more questions about employee data
-    inquirer.prompt
-    (
-        {
-            type: 'input',
-            message: 'What is the first name of the employee?',
-            name: 'first_name'
-        },
-        {
-            type: 'input',
-            message: 'What is the last name of the employee?',
-            name: 'last_name'
-        },
-        {
-            type: 'list',
-            message: `What is the employee's role?`,
-            name: 'addRole',
-            choices: []
-        },
-        {
-            type: 'input',
-            message: 'Who is their manager?',
-            name: 'employeeManager'
-        }
-
-    ).then (data => {
-        let first_name = data.first_name;
-        let last_name = data.last_name;
-        let newRole = data.addRole;
-        let newManager = data.employeeManager;
-
-        db.query(`INSERT INTO employee(first_name, last_name, role_id, manage_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager}, )`);
+    db.query(`SELECT role_id FROM employee ORDER BY role_id`, (err, res) => {
+        if(err) {
+            throw(err);
+        } 
+        inquirer.prompt
+        ([
+            {
+                type: 'input',
+                message: 'What is the first name of the employee?',
+                name: 'first_name'
+            },
+            {
+                type: 'input',
+                message: 'What is the last name of the employee?',
+                name: 'last_name'
+            },
+            {
+                type: 'list',
+                message: `What is the employee's role?`,
+                name: 'addRole',
+                choices: () => res.map(res => res.role_id)
+            },
+            {
+                type: 'input',
+                message: 'Who is their manager?',
+                name: 'employeeManager'
+            }
+    
+        ]).then (data => {
+            let first_name = data.first_name;
+            let last_name = data.last_name;
+            let newRole = data.addRole;
+            let newManager = data.employeeManager;
+    
+            db.query(`INSERT INTO employee(first_name, last_name, role_id, manage_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager}, )`);
+        })
     })
+    //use inquirer to prompt more questions about employee data
+   
     // add data to db
     //show added data
-    prompt();
 };
 
 const addRole = () => {
