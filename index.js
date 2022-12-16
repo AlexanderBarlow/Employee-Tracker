@@ -5,17 +5,17 @@ const inquirer = require('inquirer');
 const util = require('util');
 require('dotenv').config();
 
-const db = new Sequelize(
-    process.env.database,
-    process.env.db_username,
-    process.env.password,
+const db = mysql.createConnection(
     {
       host: 'localhost',
-      dialect: 'mysql',
-      port: 3306
-    }
+      // MySQL username,
+      user: process.env.db_username,
+      // MySQL password
+      password: process.env.password,
+      database: process.env.database
+    },
+    console.log(`Connected to the books_db database.`)
   );
-console.log ('Success')
 
 console.table(
     `      ------------------------
