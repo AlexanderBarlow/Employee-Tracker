@@ -1,5 +1,4 @@
 const mysql = require('mysql2');
-const Sequelize = require('sequelize');
 const consoleTable = require('console.table');
 const inquirer = require('inquirer');
 const util = require('util');
@@ -39,7 +38,8 @@ const prompt = () => {
         'Add Employee',
         'Add Departments',
         'Add Role',
-        'Update Employee Role'
+        'Update Employee Role',
+        'Exit'
     ]
     }).then(data => {
         console.log(data);
