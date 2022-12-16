@@ -23,14 +23,13 @@ const prompt = () => {
         type: 'list',
         message: 'What would you like to do',
         choices: [ 
-        'View Employees',
+        'View All Employees',
         'View Departments',
         'View Roles',
-        'Add Employees',
+        'Add Employee',
         'Add Departments',
-        'Add Roles',
-        'Update Employee Role',
-        'Exit'
+        'Add Role',
+        'Update Employee Role'
     ]
     }).then(data => {
         console.log(data);
@@ -42,11 +41,11 @@ const prompt = () => {
                 break;
 
             case 'View Departments':
-                viewByDepartment();
+                viewDepartment();
                 break;
 
             case 'View Roles':
-                viewByManager();
+                viewRoles();
                 break;
 
             case 'Add Employees':
@@ -66,25 +65,31 @@ const prompt = () => {
 }
 
 const viewAllEmployees = () => {
-
+    //We just need a query that displays a table with all the employees
 };
 
-const viewByDepartment = () => {
-
+const viewDepartment = () => {
+    //Need a query that shows all departments
 };
 
-const viewByManager = () => {
-
+const viewRoles = () => {
+    //Need a query that shows all roles
 };
 
 const addEmployee = () => {
-
+    //use inquirer to prompt more questions about employee data
+    // add data to db
+    //show added data
 };
 
 const addRole = () => {
-
+    //use inquirer to prompt more questions about role data
+    // add data to db
+    //show added data
 };
 
 const updateRole = () => {
-
+    //use inquirer to prompt more questions about role changes
+    // update data
+    //show updated data
 };
