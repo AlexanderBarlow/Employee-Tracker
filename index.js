@@ -132,9 +132,10 @@ const addEmployee = () => {
             name: 'last_name'
         },
         {
-            type: 'input',
+            type: 'list',
             message: `What is the employee's role?`,
-            name: 'addRole'
+            name: 'addRole',
+            choices: []
         },
         {
             type: 'input',
@@ -142,7 +143,14 @@ const addEmployee = () => {
             name: 'employeeManager'
         }
 
-    ) 
+    ).then (data => {
+        let first_name = data.first_name;
+        let last_name = data.last_name;
+        let newRole = data.addRole;
+        let newManager = data.employeeManager;
+
+        db.query(`INSERT INTO employee(first_name, last_name, role_id, manage_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager}, )`);
+    })
     // add data to db
     //show added data
     prompt();
