@@ -58,7 +58,7 @@ const prompt = () => {
                 viewRoles();
                 break;
 
-            case 'Add Employees':
+            case 'Add Employee':
                 addEmployee();
                 break;
 
