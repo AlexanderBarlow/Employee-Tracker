@@ -152,7 +152,12 @@ const addEmployee = () => {
             let newRole = data.addRole;
             let newManager = data.employeeManager;
     
-            db.query(`INSERT INTO employee(first_name, last_name, role_id, manage_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager}, )`);
+            db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (${first_name}, ${last_name}, ${newRole}, ${newManager})`, (err, res) => {
+                if(err){
+                    throw(err)
+                }
+                console.table(res);
+            });
         })
     })
     //use inquirer to prompt more questions about employee data
