@@ -64,3 +64,27 @@ const prompt = () => {
     });
     
 }
+
+const viewAllEmployees = () => {
+
+};
+
+const viewByDepartment = () => {
+
+};
+
+const viewByManager = () => {
+
+};
+
+const addEmployee = () => {
+
+};
+
+const addRole = () => {
+
+};
+
+const updateRole = () => {
+
+};
