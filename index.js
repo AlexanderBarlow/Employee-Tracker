@@ -80,8 +80,9 @@ const viewAllEmployees = () => {
         if(err) {
             console.log(err);
         }else {
-        console.table(result);
+        console.log(result);
         }
+        console.log('RESPONSE HANDLED');
     })
 };
 
@@ -91,8 +92,9 @@ const viewDepartment = () => {
         if(err) {
             console.log(err);
         }else {
-        console.table(result);
+        console.log(result);
         }
+        console.log('RESPONSE HANDLED');
     })
 };
 
