@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 const consoleTable = require('console.table');
-const { default: inquirer } = require('inquirer');
+const inquirer = require('inquirer');
 require('dotenv').config();
 
 const sequelize = new Sequelize(
@@ -101,3 +101,13 @@ const updateRole = () => {
     // update data
     //show updated data
 };
+
+const init = () => {
+    if(sequelize){
+        prompt();
+    }else {
+        throw(err);
+    }
+};
+
+init();
