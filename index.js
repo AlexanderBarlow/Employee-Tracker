@@ -69,6 +69,10 @@ const prompt = () => {
             case 'Update Employee Role':
                 updateRole();
                 break;
+
+            case 'Exit':
+                db.end();
+                break;
         }
     });
     
@@ -76,7 +80,7 @@ const prompt = () => {
 
 const viewAllEmployees = () => {
     //We just need a query that displays a table with all the employees
-    db.query(`SELECT first_name, last_name FROM employee`, (err, result) => {
+    db.query(`SELECT * FROM employee`, (err, result) => {
         if(err) {
             console.log(err);
         }else {
@@ -88,7 +92,7 @@ const viewAllEmployees = () => {
 
 const viewDepartment = () => {
     //Need a query that shows all departments
-    db.query(`SELECT name FROM department`, (err, result) => {
+    db.query(`SELECT * FROM department`, (err, result) => {
         if(err) {
             console.log(err);
         }else {
@@ -100,16 +104,66 @@ const viewDepartment = () => {
 
 const viewRoles = () => {
     //Need a query that shows all roles
+    db.query(`SELECT * FROM roles`, (err, result) => {
+        if(err) {
+            console.log(err);
+        }else {
+        console.log(result);
+        }
+        console.log('RESPONSE HANDLED');
+    })
 };
 
 const addEmployee = () => {
     //use inquirer to prompt more questions about employee data
+    inquirer.prompt
+    (
+        {
+            type: 'input',
+            message: 'What is the first name of the employee?',
+            name: 'first_name'
+        },
+        {
+            type: 'input',
+            message: 'What is the last name of the employee?',
+            name: 'last_name'
+        },
+        {
+            type: 'input',
+            message: `What is the employee's role?`,
+            name: 'addRole'
+        },
+        {
+            type: 'input',
+            message: 'Who is their manager?',
+            name: 'employeeManager'
+        }
+
+    )
     // add data to db
     //show added data
 };
 
 const addRole = () => {
     //use inquirer to prompt more questions about role data
+    inquirer.prompt
+    (
+        {
+            type: 'input',
+            message: 'What is the name of the role?',
+            name: 'addRole'
+        },
+        {
+            type: 'input',
+            message: 'What is the salary for the role?',
+            name: 'addSalary'
+        },
+        {
+            type: 'input',
+            message: 'What is the department_id for the role?',
+            name: 'addRole'
+        },
+    );
     // add data to db
     //show added data
 };
