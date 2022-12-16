@@ -36,6 +36,31 @@ const prompt = () => {
         console.log(data);
         let answer = data;
 
-    })
+        switch (answer.action) {
+            case 'View Employees':
+                viewAllEmployees();
+                break;
+
+            case 'View Departments':
+                viewByDepartment();
+                break;
+
+            case 'View Roles':
+                viewByManager();
+                break;
+
+            case 'Add Employees':
+                addEmployee();
+                break;
+
+            case 'Add Role':
+                addRole();
+                break;
+
+            case 'Update Employee Role':
+                updateRole();
+                break;
+        }
+    });
     
 }
